@@ -62,7 +62,7 @@ class Kernel extends HttpKernel
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'precognitive' => \Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests::class,
 
-        'auth.jwt'=>\App\Http\Middleware\JwtMiddleWare::class,
+        'auth.jwt'=>\App\Http\Middleware\JWTMiddleWare::class,
 
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
