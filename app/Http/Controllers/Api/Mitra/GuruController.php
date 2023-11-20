@@ -87,7 +87,7 @@ class GuruController extends Controller
             'nomor_identitas'   => ['required',Rule::unique('guru')->ignore(request()->id,'user_id')],
             'kode_sekolah'      => 'required',
             'kode_jurusan'      => 'required',
-            'email'             => 'unique:users,email,'.request()->id,
+            'email'             => 'required|unique:users,email,'.request()->id,
             // 'roles'             => 'required',
             'username'          => 'required|unique:users,username,'.request()->id,
             // 'password'          => 'required',

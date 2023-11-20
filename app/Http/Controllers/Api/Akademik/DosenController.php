@@ -87,7 +87,7 @@ class DosenController extends Controller
         $validator = Validator::make($request->all(), [
             'nama'              => 'required',
             'nomor_identitas'   => ['required',Rule::unique('dosen')->ignore(request()->id,'user_id')],
-            'email'             => 'unique:users,email,'.$request->id,
+            'email'             => 'required|unique:users,email,'.$request->id,
             'roles'             => 'required',
             'username'          => 'required|unique:users,username,'.$request->id,
             // 'password'          => 'required',

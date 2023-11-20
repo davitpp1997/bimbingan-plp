@@ -85,7 +85,7 @@ class MahasiswaController extends Controller
             'nama'              => 'required',
             'nim'               => ['required',Rule::unique('mahasiswa')->ignore(request()->id,'user_id')],
             'angkatan'          => 'required',
-            'email'             => 'unique:users,email,'.request()->id,
+            'email'             => 'required|unique:users,email,'.request()->id,
             // 'roles'             => 'required',
             'username'          => 'required|unique:users,username,'.request()->id,
             // 'password'          => 'required',
