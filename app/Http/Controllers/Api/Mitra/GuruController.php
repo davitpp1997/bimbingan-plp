@@ -13,13 +13,13 @@ use App\Models\Peserta;
 
 class GuruController extends Controller
 {   
-    function __construct()
-    {
-        $this->middleware('permission:user-list', ['only' => ['guru']]);
-        $this->middleware('permission:user-create', ['only' => ['create']]);
-        $this->middleware('permission:user-edit', ['only' => ['detail','update']]);
-        $this->middleware('permission:user-delete', ['only' => ['delete']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:user-list', ['only' => ['guru']]);
+    //     $this->middleware('permission:user-create', ['only' => ['create']]);
+    //     $this->middleware('permission:user-edit', ['only' => ['detail','update']]);
+    //     $this->middleware('permission:user-delete', ['only' => ['delete']]);
+    // }
 
     public function guru()
     {
@@ -129,7 +129,7 @@ class GuruController extends Controller
 
     public function detail($id)
     {
-        $user               = User::findOrFail($id);
+        $user               = User::where('id', '=', $id)->with('guru')->get();
 
         $res['status']  = 'success';
         $res['message'] = 'detail guru';

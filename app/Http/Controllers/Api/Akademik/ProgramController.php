@@ -101,7 +101,7 @@ class ProgramController extends Controller
 
     public function detail($id)
     {
-        $data               = Program::findOrFail($id);
+        $data               = Program::where('id', '=', $id)->with('mataKuliah')->get();
 
         $res['status']  = 'success';
         $res['message'] = 'detail program';

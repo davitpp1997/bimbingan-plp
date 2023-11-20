@@ -11,13 +11,13 @@ use App\Models\Peserta;
 
 class SekolahController extends Controller
 {
-	function __construct()
-    {
-        $this->middleware('permission:sekolah-list', ['only' => ['sekolah']]);
-        $this->middleware('permission:sekolah-create', ['only' => ['create']]);
-        $this->middleware('permission:sekolah-edit', ['only' => ['detail','update']]);
-        $this->middleware('permission:sekolah-delete', ['only' => ['delete']]);
-    }
+	// function __construct()
+ //    {
+ //        $this->middleware('permission:sekolah-list', ['only' => ['sekolah']]);
+ //        $this->middleware('permission:sekolah-create', ['only' => ['create']]);
+ //        $this->middleware('permission:sekolah-edit', ['only' => ['detail','update']]);
+ //        $this->middleware('permission:sekolah-delete', ['only' => ['delete']]);
+ //    }
     
     public function sekolah()
     {

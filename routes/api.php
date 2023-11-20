@@ -112,7 +112,8 @@ Route::group(['middleware' => ['auth.jwt']], function() {
     Route::get('peserta', [PesertaController::class, 'peserta']);
     Route::post('create_peserta', [PesertaController::class, 'create']);
     Route::post('update_peserta', [PesertaController::class, 'update']);
-    Route::get('detail_peserta/{id}', [PesertaController::class, 'delete']);
+    Route::get('detail_peserta/{id}', [PesertaController::class, 'detail']);
+    Route::get('delete_peserta/{id}', [PesertaController::class, 'delete']);
 
     //Bimbingan
     Route::get('bimbingan_dosen/{id}', [BimbinganController::class, 'bimbinganDosenById']);

@@ -13,13 +13,13 @@ use App\Models\Mahasiswa;
 
 class MahasiswaController extends Controller
 {   
-    function __construct()
-    {
-        $this->middleware('permission:user-list', ['only' => ['mahasiswa']]);
-        $this->middleware('permission:user-create', ['only' => ['create']]);
-        $this->middleware('permission:user-edit', ['only' => ['detail','update']]);
-        $this->middleware('permission:user-delete', ['only' => ['delete']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:user-list', ['only' => ['mahasiswa']]);
+    //     $this->middleware('permission:user-create', ['only' => ['create']]);
+    //     $this->middleware('permission:user-edit', ['only' => ['detail','update']]);
+    //     $this->middleware('permission:user-delete', ['only' => ['delete']]);
+    // }
 
     public function mahasiswa()
     {

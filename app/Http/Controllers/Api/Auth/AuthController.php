@@ -16,10 +16,10 @@ use App\Models\Mahasiswa;
 
 class AuthController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:user-create', ['only' => ['register']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:user-create', ['only' => ['register']]);
+    // }
 
     public function register() {
         $validator = Validator::make(request()->all(), [

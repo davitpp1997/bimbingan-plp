@@ -10,13 +10,13 @@ use App\Models\Jurusan;
 
 class JurusanController extends Controller
 {
-	function __construct()
-    {
-        $this->middleware('permission:jurusan-list', ['only' => ['jurusan']]);
-        $this->middleware('permission:jurusan-create', ['only' => ['create']]);
-        $this->middleware('permission:jurusan-edit', ['only' => ['detail','update']]);
-        $this->middleware('permission:jurusan-delete', ['only' => ['delete']]);
-    }
+	// function __construct()
+ //    {
+ //        $this->middleware('permission:jurusan-list', ['only' => ['jurusan']]);
+ //        $this->middleware('permission:jurusan-create', ['only' => ['create']]);
+ //        $this->middleware('permission:jurusan-edit', ['only' => ['detail','update']]);
+ //        $this->middleware('permission:jurusan-delete', ['only' => ['delete']]);
+ //    }
     
     public function jurusan()
     {

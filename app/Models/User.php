@@ -105,7 +105,7 @@ class User extends Authenticatable implements JWTSubject
     public function dosen()
     {
         // return $this->hasOne(Dosen::class, 'user_id');
-        return $this->hasOne('App\Models\Dosen');
+        return $this->hasOne(Dosen::class, 'user_id');
     }
 
     public function guru()

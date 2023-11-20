@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Models\Dosen;
-use App\Models\PesertaPLP;
+use App\Models\Peserta;
 
 
 /**
@@ -24,10 +24,10 @@ class BimbinganController extends Controller
     {
         $data = [];
 
-        $data = PesertaPLP::where('id_dosen_pembimbing','=',$id)->with('program','mahasiswa','pamong')->get();
+        $data = Peserta::where('id_dosen_pembimbing','=',$id)->with('program','mahasiswa','pamong','penguji')->get();
 
         $res['status']  = 'success';
-        $res['message'] = 'list dosen';
+        $res['message'] = 'list bimbingan dosen';
         $res['data']    =  $data;
 
         return $res;

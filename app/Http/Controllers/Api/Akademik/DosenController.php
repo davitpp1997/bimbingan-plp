@@ -13,25 +13,25 @@ use App\Models\Peserta;
 
 class DosenController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:user-list', ['only' => ['dosen']]);
-        $this->middleware('permission:user-create', ['only' => ['create']]);
-        $this->middleware('permission:user-edit', ['only' => ['detail','update']]);
-        $this->middleware('permission:user-delete', ['only' => ['delete']]);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:user-list', ['only' => ['dosen']]);
+    //     $this->middleware('permission:user-create', ['only' => ['create']]);
+    //     $this->middleware('permission:user-edit', ['only' => ['detail','update']]);
+    //     $this->middleware('permission:user-delete', ['only' => ['delete']]);
+    // }
     
     public function dosen()
     {
         // $data = [];
-        $data = User::with('dosen')->get();
+        // $data = User::with('dosen')->get();
 
-        // if(request()->roles == null){
-        //     $data = User::role(["Dosen Pembimbing","Dosen Penguji"])->with('roles:id,name','dosen')->get();
-        // }
-        // else{
-        //     $data = User::role(request()->roles)->with('dosen','roles:id,name')->get();
-        // }
+        if(request()->roles == null){
+            $data = User::role(["Dosen Pembimbing","Dosen Penguji"])->with('roles:id,name','dosen')->get();
+        }
+        else{
+            $data = User::role(request()->roles)->with('dosen','roles:id,name')->get();
+        }
 
         $res['status']  = 'success';
         $res['message'] = 'list dosen';
@@ -130,7 +130,7 @@ class DosenController extends Controller
 
     public function detail($id)
     {
-        $user  = User::findOrFail($id);
+        $user  = User::where('id','=',$id)->with('dosen','roles:id,name')->get();
 
         $res['status']  = 'success';
         $res['message'] = 'dosen berhasil ditemukan';
