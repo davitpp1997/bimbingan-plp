@@ -22,7 +22,8 @@ class Peserta extends Model
                 'id_dosen_pembimbing',
                 'id_sekolah',
                 'id_jurusan',
-                'id_guru_pamong'
+                'id_guru_pamong',
+                'id_dosen_penguji'
             ];
 
     protected $hidden = [

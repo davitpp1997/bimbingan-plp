@@ -18,4 +18,11 @@ class Guru extends Model
                 'id_sekolah',
                 'id_jurusan'
             ];
+
+    public function bimbingan()
+    {
+        return $this->hasMany(PesertaPLP::class, 'id_guru_pamong', 'user_id')
+                    ->join('mahasiswa', 'mahasiswa.user_id', '=', 'peserta_plp.id_mahasiswa')
+                    ;
+    }
 }

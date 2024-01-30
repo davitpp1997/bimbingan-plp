@@ -22,6 +22,20 @@ use App\Http\Controllers\Api\Program\PesertaController;
 
 // Bimbingan
 use App\Http\Controllers\Api\Bimbingan\BimbinganController;
+use App\Http\Controllers\Api\Bimbingan\LogbookController;
+
+// Lesson Study
+use App\Http\Controllers\Api\LessonStudy\LessonStudyController;
+use App\Http\Controllers\Api\LessonStudy\PengamatanSiswaController;
+use App\Http\Controllers\Api\Penilaian\KegiatanMengajarController;
+
+// Ujian Lisan
+use App\Http\Controllers\Api\UjianLisan\UjianLisanController;
+
+
+// Penilaian
+use App\Http\Controllers\Api\Penilaian\PenilaianController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -93,11 +107,11 @@ Route::group(['middleware' => ['auth.jwt']], function() {
     Route::get('delete_sekolah/{id}', [SekolahController::class, 'delete']);
 
     //Jurusan
-    Route::get('jurusan', [JurusanController::class, 'jurusan']);
-    Route::post('create_jurusan', [JurusanController::class, 'create']);
-    Route::post('update_jurusan', [JurusanController::class, 'update']);
-    Route::get('detail_jurusan/{id}', [JurusanController::class, 'detail']);
-    Route::get('delete_jurusan/{id}', [JurusanController::class, 'delete']);
+    // Route::get('jurusan', [JurusanController::class, 'jurusan']);
+    // Route::post('create_jurusan', [JurusanController::class, 'create']);
+    // Route::post('update_jurusan', [JurusanController::class, 'update']);
+    // Route::get('detail_jurusan/{id}', [JurusanController::class, 'detail']);
+    // Route::get('delete_jurusan/{id}', [JurusanController::class, 'delete']);
 
     //Guru
     Route::get('guru', [GuruController::class, 'guru']);
@@ -106,9 +120,7 @@ Route::group(['middleware' => ['auth.jwt']], function() {
     Route::get('detail_guru/{id}', [GuruController::class, 'detail']);
     Route::get('delete_guru/{id}', [GuruController::class, 'delete']);
 
-    
-
-    //Program
+    //Peserta
     Route::get('peserta', [PesertaController::class, 'peserta']);
     Route::post('create_peserta', [PesertaController::class, 'create']);
     Route::post('update_peserta', [PesertaController::class, 'update']);
@@ -116,8 +128,34 @@ Route::group(['middleware' => ['auth.jwt']], function() {
     Route::get('delete_peserta/{id}', [PesertaController::class, 'delete']);
 
     //Bimbingan
-    Route::get('bimbingan_dosen/{id}', [BimbinganController::class, 'bimbinganDosenById']);
+    Route::post('bimbingan', [BimbinganController::class, 'bimbingan']);
 
+    // Logbok
+    Route::post('create_logbook', [LogbookController::class, 'create']);
+    Route::post('logbook_pembimbing', [LogbookController::class, 'logbookPembimbing']);
+    Route::get('validasi/{id}', [LogbookController::class, 'validasi']);
 
+    // Lesson Study
+    Route::post('create_ls', [LessonStudyController::class, 'create']);
+
+    // Penilaian Kegiatan Mengajar
+    Route::post('save_nkm', [KegiatanMengajarController::class, 'save']);
+
+    // Observer
+    Route::post('save_aktivitas', [PengamatanSiswaController::class, 'saveAktivitas']);
+    Route::post('save_catatan', [PengamatanSiswaController::class, 'saveCatatan']);
+
+    // Ujian Lisan 
+    Route::post('create_ujian', [UjianLisanController::class, 'create']);
+    Route::post('save_nilai_ujian', [UjianLisanController::class, 'saveNilaiUjian']);
+    Route::post('create_saran', [UjianLisanController::class, 'createSaran']);
+
+    // Penilaian
+    Route::post('save_nks', [PenilaianController::class, 'saveNilaiKS']);
+    Route::post('save_naipti', [PenilaianController::class, 'saveNilaiAIPTI']);
+    Route::post('save_nprp', [PenilaianController::class, 'saveNilaiPRP']);
+    Route::post('save_nlaporan', [PenilaianController::class, 'saveNilaiLaporan']);
+    Route::post('perhitungan_nls', [PenilaianController::class, 'perhitunganNilaiLS']);
+    Route::post('perhitungan_nakhir', [PenilaianController::class, 'perhitunganNilaiAkhir']);
 
 });

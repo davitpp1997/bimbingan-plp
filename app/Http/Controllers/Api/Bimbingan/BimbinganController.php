@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api\Bimbingan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Models\Dosen;
+// use App\Models\Dosen;
 use App\Models\Peserta;
-
+// use App\Models\Logbook;
 
 /**
  * 
@@ -20,18 +20,30 @@ class BimbinganController extends Controller
 	// 	// code...
 	// }
 
-	public function bimbinganDosenById($id)
+	public function bimbingan(Request $request)
     {
         $data = [];
 
-        $data = Peserta::where('id_dosen_pembimbing','=',$id)->with('program','mahasiswa','pamong','penguji')->get();
+        if($request->pembimbing == 'dosen'){
+            $data = Peserta::where('id_dosen_pembimbing','=',$request->id)
+                    // ->select('id as id_peserta', 'mahasiswa')
+                    ->with('mahasiswa')
+                    ->get();
+
+        }elseif ($request->pembimbing == 'guru') {
+            $data = Peserta::where('id_dosen_pembimbing','=',$request->id)->with('program','mahasiswa','pamong','penguji')->get();
+        }
+
+        // $data = Peserta::where('id_dosen_pembimbing','=',$id)->with('program','mahasiswa','pamong','penguji')->get();
 
         $res['status']  = 'success';
-        $res['message'] = 'list bimbingan dosen';
+        $res['message'] = 'list bimbingan';
         $res['data']    =  $data;
 
         return $res;
     }
+
+    
 }
 
 ?>
